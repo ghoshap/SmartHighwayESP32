@@ -120,8 +120,8 @@ delay(1000);
  
  while(dht.getStatusString() == "TIMEOUT")
   {
-    humidity = dht.getHumidity();
-    temperature = dht.getTemperature();
+    float humidity = dht.getHumidity();
+  float temperature = dht.getTemperature();
     }
  
   Serial.println(dht.getStatusString());
