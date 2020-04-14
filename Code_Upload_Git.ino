@@ -118,28 +118,7 @@ else
 
 delay(1000);
  
- int rain_sensor() {
-  // read the input on digital pin 5:
-  int sensorValue = digitalRead(rainPin);
-  if(sensorValue == 0){
-    Serial.println(" - It's raining love");
-    lcd.clear();
-    lcd.setCursor(0,0);
-    lcd.print("Wet Roads"); 
-    lcd.setCursor(0,1); 
-    lcd.print("Go Slow...");
-    return 0;
-  }
-  else {
-    Serial.println(" - It's dry");
-    //Scroll_Text("DRY....");
-    return 1;
-  }
-  delay(500);
-}
- 
- 
-  while(dht.getStatusString() == "TIMEOUT")
+ while(dht.getStatusString() == "TIMEOUT")
   {
     humidity = dht.getHumidity();
     temperature = dht.getTemperature();
@@ -210,6 +189,42 @@ delay(1000);
     delay(10000);
 }
 
+int rain_sensor() {
+  // read the input on digital pin 5:
+  int sensorValue = digitalRead(rainPin);
+  if(sensorValue == 0){
+    Serial.println(" - It's raining love");
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("Wet Roads"); 
+    lcd.setCursor(0,1); 
+    lcd.print("Go Slow...");
+    return 0;
+  }
+  else {
+    Serial.println(" - It's dry");
+    //Scroll_Text("DRY....");
+    return 1;
+  }
+  delay(500);
+}
+
+int flame_sensor()
+{
+  int sensorValue = digitalRead(flamePin);
+  if(sensorValue == 0){
+    Serial.println(" FIRE....FIRE...FIRE");
+    lcd.clear();
+    lcd.print("FIRE....");
+  }
+  else {
+    Serial.println(" NO FIRE ");
+    //Scroll_Text("DRY....");
+  }
+  delay(500);
+  
+  return sensorValue;
+}
 
 
 
